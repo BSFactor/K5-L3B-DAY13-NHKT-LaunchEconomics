@@ -4,6 +4,8 @@ Không cần khoá API. Điền các chỗ ghi VIẾT Ở ĐÂY (đánh dấu TO
 Bản gốc chưa sửa nằm ở lab13_starter.py.
 """
 import math
+from statistics import NormalDist
+
 import pandas as pd
 
 # Bảng giá GIẢ ĐỊNH của lab (không phải giá thật của nhà cung cấp nào)
@@ -97,6 +99,17 @@ def mo_hinh(runs, reqs, gia_vao=26, gia_ra=130, gia_tool=15, luong_phut=2000,
     )
 
 
+def co_mau_hai_ty_le(p1, p2, alpha=0.05, power=0.8):
+    """Cỡ mẫu mỗi nhóm khi so sánh hai tỷ lệ với phân bổ 1:1."""
+    normal = NormalDist()
+    p_trung_binh = (p1 + p2) / 2
+    thanh_phan_alpha = normal.inv_cdf(1 - alpha / 2) * math.sqrt(
+        2 * p_trung_binh * (1 - p_trung_binh)
+    )
+    thanh_phan_power = normal.inv_cdf(power) * math.sqrt(p1 * (1 - p1) + p2 * (1 - p2))
+    return math.ceil(((thanh_phan_alpha + thanh_phan_power) / (p2 - p1)) ** 2)
+
+
 if __name__ == '__main__':
     runs = pd.read_csv('logix_runs.csv')
     reqs = pd.read_csv('logix_requests.csv', keep_default_na=False)
@@ -177,6 +190,48 @@ if __name__ == '__main__':
               f"cố định {fixed_per_success:,.0f} đ/việc | "
               f"cps + cố định {cps_fixed:,.0f} đ | "
               f"{cps_fixed / BASELINE:.2f}x")
-    # TODO CP4 · Nhiệm vụ D: cỡ mẫu.
-    #   from statsmodels.stats.proportion import proportion_effectsize
-    #   from statsmodels.stats.power import NormalIndPower
+    print('\nD1 · Cỡ mẫu pilot')
+    baseline = 0.70
+    icc = 0.02
+    ca_moi_nhan_vien = 75
+    nhan_vien_moi_nhom = 20
+    depot_moi_nhom = 6
+
+    n_5_diem = co_mau_hai_ty_le(baseline, 0.75)
+    he_so_thiet_ke = 1 + (ca_moi_nhan_vien - 1) * icc
+    n_theo_nhan_vien = math.ceil(n_5_diem * he_so_thiet_ke)
+    so_nhan_vien = math.ceil(n_theo_nhan_vien / ca_moi_nhan_vien)
+    n_6_diem = co_mau_hai_ty_le(baseline, 0.76)
+    # Giải c*m / (1 + (m - 1)*ICC) >= n cho m.
+    ca_can_moi_nhan_vien = math.ceil(
+        n_6_diem * (1 - icc) / (nhan_vien_moi_nhom - n_6_diem * icc)
+    )
+    de_6_diem = 1 + (ca_can_moi_nhan_vien - 1) * icc
+
+    print(f'a) Chia theo yêu cầu: {n_5_diem:,} yêu cầu/nhóm')
+    print(f'b) Chia theo nhân viên, m = {ca_moi_nhan_vien}: DE = {he_so_thiet_ke:.2f}, '
+          f'{n_theo_nhan_vien:,} yêu cầu/nhóm, {so_nhan_vien} nhân viên/nhóm')
+    print(f'c) {nhan_vien_moi_nhom} nhân viên/nhóm: '
+          f'cỡ mẫu hiệu dụng < {nhan_vien_moi_nhom / icc:,.0f}/nhóm')
+    print(f'd) {depot_moi_nhom} depot/nhóm: '
+          f'cỡ mẫu hiệu dụng < {depot_moi_nhom / icc:,.0f}/nhóm')
+    print(f'e) +6 điểm: {n_6_diem} yêu cầu hiệu dụng/nhóm, '
+          f'ít nhất {ca_can_moi_nhan_vien} yêu cầu/nhân viên, DE = {de_6_diem:.2f}')
+
+    print('\nCP4 · Tỷ lệ mở lại trong 7 ngày')
+    for pham_vi, yeu_cau in [('Toàn mẫu', reqs), ('noi_dia + hang_nang', pilot_req)]:
+        mo_lai = yeu_cau['mo_lai_trong_7_ngay']
+        print(f'{pham_vi}: {mo_lai.sum():.0f}/{len(mo_lai):,} = {mo_lai.mean():.2%}')
+
+    yeu_cau_moi_ngay = 1500
+    tong_nhan_vien = 2 * nhan_vien_moi_nhom
+    ty_le_trong_pham_vi = len(pilot_req) / len(reqs)
+    ca_pilot_moi_nguoi_ngay = yeu_cau_moi_ngay * ty_le_trong_pham_vi / tong_nhan_vien
+    ngay_gom_mau = math.ceil(ca_can_moi_nhan_vien / ca_pilot_moi_nguoi_ngay)
+    theo_doi_mo_lai = 7
+    print('\nCP4 · Ước tính thời gian gom mẫu ở bước 20 nhân viên mỗi nhóm')
+    print(f'{nhan_vien_moi_nhom * ca_can_moi_nhan_vien:,} yêu cầu thực tế mỗi nhóm')
+    print(f'{ca_pilot_moi_nguoi_ngay:.2f} yêu cầu trong phạm vi/người/ngày '
+          f'với giả định tải chia đều')
+    print(f'Khoảng {ngay_gom_mau} ngày gom mẫu + {theo_doi_mo_lai} ngày theo dõi '
+          f'từ ca cuối = {ngay_gom_mau + theo_doi_mo_lai} ngày kể từ bước đủ hai nhóm')

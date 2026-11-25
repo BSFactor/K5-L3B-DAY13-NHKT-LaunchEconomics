@@ -3,11 +3,19 @@
 # Kiểm tra đọc được: python -c "import yaml; yaml.safe_load(open('../report/team/pilot_plan.yaml'))"
 #
 # D1 · Cỡ mẫu (baseline 0,70; mục tiêu +5 điểm; alpha 0,05; power 0,8; ICC 0,02)
-#   a) Chia theo yêu cầu:
-#   b) Theo nhân viên, m = 75:
-#   c) 20 nhân viên mỗi nhóm:
-#   d) 6 depot mỗi nhóm:
-#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm:
+#   a) Chia theo yêu cầu: 1.251 yêu cầu mỗi nhóm (DE = 1).
+#   b) Theo nhân viên, m = 75: DE = 2,48; 3.103 yêu cầu và 42 nhân viên mỗi nhóm, cần 84 người trong khi có khoảng 40.
+#   c) 20 nhân viên mỗi nhóm: Cỡ mẫu hiệu dụng dưới 1.000 mỗi nhóm, thấp hơn 1.251.
+#   d) 6 depot mỗi nhóm: Cỡ mẫu hiệu dụng dưới 300 mỗi nhóm.
+#   e) Mức chênh 6 điểm (859 mỗi nhóm), 20 nhân viên mỗi nhóm: Ít nhất 299 yêu cầu mỗi nhân viên (DE = 6,96).
+#
+# Ước tính thời gian gom mẫu nếu chia 20 nhân viên mỗi nhóm:
+#   20 x 299 = 5.980 yêu cầu thực tế mỗi nhóm, tương đương khoảng 859 ca hiệu dụng.
+#   Toàn hệ thống: 1.500 yêu cầu/ngày / 40 người = 37,5 yêu cầu/người/ngày.
+#   Phạm vi noi_dia + hang_nang: 37,5 x 982/1.200 = 30,69 yêu cầu/người/ngày.
+#   Giả định lưu lượng và cơ cấu loại yêu cầu ổn định, tải chia đều: 299 / 30,69 ≈ 9,74 ngày, làm tròn lên 10 ngày.
+#   Chờ thêm 7 ngày kể từ ca cuối để chỉ số mở lại đủ thời gian theo dõi, tức khoảng 17 ngày từ bước đủ 20 người mỗi nhóm.
+#   Kiểm số ca thực tế theo từng nhân viên ở cả hai nhóm trước khi chốt ngày đọc kết quả.
 #
 # D2 · Năm câu kiểm tra "tách được tác động" với cách chia đã chọn (mỗi câu một dòng):
 #   1. Đối chứng chạy cùng thời gian:
@@ -18,7 +26,7 @@
 #
 # Đánh đổi đã chấp nhận (nếu cách chia chưa đạt cả hai điều kiện):
 #
-# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn:
+# Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn: Toàn mẫu 51/1.200 = 4,25%. Trong phạm vi noi_dia + hang_nang: 39/982 = 3,97%. Ngưỡng an toàn chờ chốt.
 
 pilot:
   owner: "?"                      # một người có tên vai trò, không ghi "cả đội"
