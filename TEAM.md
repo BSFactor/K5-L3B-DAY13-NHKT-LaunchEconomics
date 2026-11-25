@@ -50,3 +50,24 @@ Sao chép mục dưới đây cho từng thành viên.
 ### Bằng chứng
 
 -
+
+## NguyenTrongNghia-2A202603835
+
+### Phần việc phụ trách
+
+- Người gắn nhãn 1: đọc đề, theo dõi điều kiện "Xong khi" / "Tự kiểm tra" của từng checkpoint.
+- CP3: gắn nhãn độc lập 20 ca lỗi, so nhãn, hoàn thiện `report/team/bang_loi.md`.
+- CP4: điền `report/team/pilot_plan.yaml` (D2, đánh đổi, luật dừng, các trường còn `?`).
+
+### Đóng góp cụ thể
+
+- Gắn độc lập cột "Nhãn người 1" cho 20 ca; so với Người gắn nhãn 2: 4 ca không trùng (7, 8, 10, 13), đồng thuận 16/20 = 80%.
+- Viết quy tắc phân biệt cho 4 ca không trùng và bảng khắc phục 5 ca, mỗi loại một ca (6, 20, 10, 19, 12), mỗi dòng có ngưỡng đo được và một vai trò phụ trách.
+- Điền pilot_plan.yaml: chia theo nhân viên 20 + 20, chấp nhận mức chênh 6 điểm (859 ca hiệu dụng/nhóm, DE 6,96; power còn khoảng 0,64 nếu tác động thật là 5 điểm); ba luật dừng an toàn, chi phí, mức độ sử dụng.
+- Kiểm tra CP1–CP4 theo mục "Tự kiểm tra" trong `CHECKPOINTS.md`.
+
+### Bằng chứng
+
+- Commit `a4ecb5c` (điền nhãn người 1), `e36337d` (bảng lỗi và báo cáo cá nhân).
+- File: `report/team/bang_loi.md`, `report/team/pilot_plan.yaml`, `report/team/2A202603835_NguyenTrongNghia.md`.
+- `pilot_plan.yaml` đọc được bằng `yaml.safe_load` và không còn `?` ngoài dòng chú thích.
