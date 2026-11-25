@@ -12,7 +12,7 @@ Nhóm: NHKT · Lớp: L3B
 | 4 · Chỉ số chính, chỉ số dùng, chỉ số an toàn | ... | Chưa | ... |
 | 5 · Bảng lỗi và cách khắc phục | Người gắn nhãn 1 và 2 đồng thuận 16/20 ca (80%); 4 ca bất đồng (7, 8, 10, 13) đã thống nhất; 5 ca khắc phục đủ 5 loại, có cách phát hiện đo được và một vai trò phụ trách | Xong, có bằng chứng | Người gắn nhãn 1,2 |
 | 6 · Pilot plan | ... | Chưa | ... |
-| 7 · Rủi ro kinh tế | ... | Chưa | ... |
+| 7 · Rủi ro kinh tế | Làm lại gấp đôi: CPS 6.787 đ (+51,8%); xem lại 100%: CPS 11.743 đ (0,98× mức 12.000 đ/YC tự làm), tăng lên 12.414 đ nếu làm lại 15,3 phút (1,03×; simulated). Ngưỡng và hành động theo dõi: chờ E2. | Giả lập | Người kiểm số |
 
 **Đề xuất:** Go · Go có điều kiện · No-go (giữ một). Go có điều kiện: ghi từng điều kiện, người phụ trách, ngày kiểm tra. No-go: ghi việc phải làm để quay lại cổng.
 
