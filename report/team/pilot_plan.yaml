@@ -37,9 +37,25 @@
 # Tỉ lệ mo_lai_trong_7_ngay hiện tại và ngưỡng an toàn đã chọn: Toàn mẫu 51/1.200 = 4,25%. Trong phạm vi noi_dia + hang_nang: 39/982 = 3,97%.
 #   Ngưỡng an toàn: so với nhóm đối chứng, từ bước 10 người dùng ngưỡng chênh 2 điểm so với đối chứng. Áp dụng trần tuyệt đối 6% và dừng ngay khi hoàn trùng ở mọi bước.
 #   Không dùng ngưỡng tuyệt đối 3% vì mức hiện tại 3,97% đã vượt, pilot sẽ bị dừng ngay tuần đầu.
+#   Tách hai luật an toàn vì hai tín hiệu khác nhau:
+#   - Hoàn tiền trùng là sự cố: 1 ca là dừng ngay, không chờ cửa sổ thời gian.
+#   - mo_lai_trong_7_ngay là chỉ số trễ: một yêu cầu cần đủ 7 ngày mới biết có mở lại không, và mẫu theo ngày quá nhỏ
+#     (bước 0.10: 4 người x 30,69 ≈ 123 yêu cầu/ngày, ≈ 5 ca mở lại/ngày ở mức 3,97%), nên đánh giá hằng tuần
+#     trên nhóm yêu cầu đã đủ 7 ngày theo dõi, không đánh giá theo ngày.
 #
 # Số nền cho luật dùng: tỉ lệ bỏ qua gợi ý (quyet_dinh_xem_lai là sua hoặc bo, chia số ca được xem lại)
 #   trong phạm vi noi_dia + hang_nang là 27/128 = 21,1% (toàn mẫu 48/177 = 27,1%).
+#
+# Ghi chú về baseline 0,70:
+#   0,70 là số đề cho: chỉ số chính khi chỉ có nhân viên, tính trên mọi loại yêu cầu. D1 dùng số này theo đề.
+#   Con số 92,26% (906/982) trong đợt chạy thử không phải baseline: đó là chỉ số khi có trợ lý, trên phạm vi đã lọc
+#   noi_dia + hang_nang, và không có nhóm đối chứng.
+#   Baseline đúng cho pilot là chỉ số khi chỉ có nhân viên trong phạm vi noi_dia + hang_nang; nhiều khả năng cao hơn 0,70.
+#   Cỡ mẫu cho mức chênh 5 điểm (statsmodels, alpha 0,05, power 0,8) đổi theo baseline:
+#     0,70 → 1.250 · 0,80 → 902 · 0,85 → 680 · 0,90 → 424 yêu cầu mỗi nhóm.
+#   Trước ngày bắt đầu, PM trợ lý hoàn phí đo baseline này từ dữ liệu nhân viên tự làm 4 tuần gần nhất,
+#   rồi tính lại n_per_arm, design_effect và mde; nếu baseline gần 0,92 thì mục tiêu +5 điểm (lên 0,97) gần chạm trần
+#   và Giám đốc vận hành cần đặt lại ngưỡng mở rộng.
 
 pilot:
   owner: "Giám đốc vận hành LogiX-VN"
@@ -51,7 +67,7 @@ pilot:
   rollout: [0.10, 0.25, 0.50]     # 4 → 10 → 20 nhân viên; ít nhất một tuần ở hai bước đầu; chỉ thu mẫu chỉ số chính từ bước 0.50
   primary_metric:
     name: dong_trong_24h_khong_mo_lai_7_ngay
-    baseline: 0.70
+    baseline: 0.70                # số đề cho (mọi loại yêu cầu); đo lại cho phạm vi pilot trước ngày bắt đầu, xem ghi chú đầu file
     mde: 0.06                     # đánh đổi đã chấp nhận: 20 cụm mỗi nhóm chỉ đủ cho 6 điểm, không đủ cho 5 điểm
     alpha: 0.05
     power: 0.80
@@ -61,12 +77,13 @@ pilot:
   identifiability:
     concurrent_control: "Có: 20 nhân viên đối chứng làm cùng thời gian, cùng các depot với 20 nhân viên dùng trợ lý"
     spillover_risk: "Trung bình: nhân viên đối chứng có thể hỏi câu trả lời của đồng nghiệp cùng depot; giảm bằng cấp quyền theo tài khoản và log lượt mở trợ lý theo staff_id kèm trace_id, nhân viên đối chứng có lượt mở thì báo cáo riêng"
-    predeclared: "Có: chỉ số chính, mức chênh 6 điểm, ba luật dừng, seed bốc thăm và ngày quyết định chốt trước ngày bắt đầu 2026-12-07"
+    predeclared: "Có: chỉ số chính, mức chênh 6 điểm, bốn luật dừng, seed bốc thăm và ngày quyết định chốt trước ngày bắt đầu 2026-12-07"
   stop_rules:
-    - "AN TOÀN · NẾU tỉ lệ mo_lai_trong_7_ngay của nhóm trợ lý vượt 6% ở bất kỳ bước nào, hoặc cao hơn đối chứng từ 2 điểm trở lên kể từ bước 10 nhân viên, hoặc có từ 1 ca hoàn tiền trùng cho cùng mã vận đơn TRONG 3 ngày liên tiếp (ca hoàn trùng: dừng ngay) THÌ Giám đốc vận hành tắt trợ lý cho toàn nhóm trong 30 phút và Kỹ sư trưởng agent rà trace_id các ca lỗi KHÔNG THÌ tiếp tục theo dõi và chỉ tăng bước khi đủ thời gian quan sát và qua các kiểm tra chi phí, sử dụng"
+    - "AN TOÀN · SỰ CỐ · NẾU có từ 1 ca hoàn tiền trùng cho cùng mã vận đơn (đối soát sổ cái mỗi giờ) TRONG bất kỳ thời điểm nào, ở mọi bước rollout, không chờ cửa sổ thời gian THÌ Giám đốc vận hành tắt trợ lý ngay cho toàn nhóm (hiệu lực trong 30 phút), Kỹ sư trưởng agent rà trace_id và sửa khoá chống trùng KHÔNG THÌ không được bật lại trợ lý cho tới khi đối soát 24 giờ chạy lại đạt 0 ca trùng"
+    - "AN TOÀN · MỞ LẠI · NẾU tỉ lệ mo_lai_trong_7_ngay của nhóm trợ lý vượt trần 6% ở bất kỳ bước nào, hoặc cao hơn đối chứng từ 2 điểm trở lên kể từ bước 10 nhân viên, tính trên nhóm yêu cầu đã đủ 7 ngày theo dõi (đánh giá mỗi thứ Hai cho yêu cầu tạo từ 7 đến 14 ngày trước) TRONG 2 lần đánh giá tuần liên tiếp THÌ Giám đốc vận hành tắt trợ lý cho toàn nhóm trong 30 phút và Kỹ sư trưởng agent rà trace_id các ca mở lại KHÔNG THÌ không được sang bước rollout tiếp theo khi tuần gần nhất còn vượt ngưỡng"
     - "CHI PHÍ · NẾU chi phí biến đổi mỗi việc thành công (token, tool, giờ xem lại và làm lại) vượt 6.000 đ; theo dõi riêng 40 triệu đ phí cố định mỗi tháng trong E2 TRONG 2 tuần liên tiếp THÌ PM trợ lý hoàn phí thu hẹp phạm vi về noi_dia và giới hạn 2 lần chạy (B3: 4.237 đ/việc, rẻ nhất cho cả hệ thống 6.901.220 đ) KHÔNG THÌ không được mở rộng sang thêm loại yêu cầu hay depot"
-    - "MỨC ĐỘ SỬ DỤNG · NẾU tỉ lệ bỏ qua gợi ý (sửa hoặc bỏ, trên số ca được xem lại) vượt 40% (gần gấp đôi mức 21,1% trong đợt chạy thử) TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn ít nhất 5 nhân viên nhóm trợ lý trong 3 ngày và gửi danh sách lý do cho PM trợ lý hoàn phí KHÔNG THÌ tiếp tục theo dõi và chỉ tăng bước khi đạt các kiểm tra an toàn, chi phí"
-  interim_looks: "chỉ kiểm tra chỉ số an toàn"   # mỗi ngày; không đọc chỉ số chính trước ngày quyết định
+    - "MỨC ĐỘ SỬ DỤNG · NẾU tỉ lệ bỏ qua gợi ý (sửa hoặc bỏ, trên số ca được xem lại) vượt 40% (gần gấp đôi mức 21,1% trong đợt chạy thử) TRONG 1 tuần THÌ Trưởng nhóm CSKH phỏng vấn ít nhất 5 nhân viên nhóm trợ lý trong 3 ngày và gửi danh sách lý do cho PM trợ lý hoàn phí KHÔNG THÌ không được chuyển bước rollout cho tới khi đạt các kiểm tra an toàn, chi phí"
+  interim_looks: "chỉ kiểm tra chỉ số an toàn"   # hoàn trùng: đối soát mỗi giờ; mở lại: mỗi tuần trên yêu cầu đủ 7 ngày; không đọc chỉ số chính trước ngày quyết định
   rollback: "Giám đốc vận hành bấm cờ tắt trợ lý theo tài khoản, hiệu lực trong 30 phút; yêu cầu đang xử lý chuyển sang luồng nhân viên tự làm như trước pilot, kèm tóm tắt và trace_id để không phải hỏi lại khách"
   decision_date: "2027-01-08"     # bắt đầu 2026-12-07; đủ 20 người mỗi nhóm từ 2026-12-21; 10 ngày gom mẫu + 7 ngày theo dõi mở lại
   simulated_inputs: ["phut_xem_lai_simulated", "phut_lam_lai_simulated", "lương nhân viên 2.000 đ/phút", "chi phí nhân viên tự làm 12.000 đ/yêu cầu", "chi phí cố định 40 triệu đ/tháng", "khối lượng 45.000 yêu cầu/tháng", "ICC 0,02", "baseline chỉ số chính 0,70", "chi phí mỗi việc thành công theo loại (A3) và kể cả cố định (A4)", "ngưỡng 6.000 đ trong luật dừng chi phí"]

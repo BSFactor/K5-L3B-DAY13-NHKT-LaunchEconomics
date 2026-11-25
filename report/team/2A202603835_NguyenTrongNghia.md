@@ -24,7 +24,8 @@
 - CP4 (`pilot_plan.yaml`):
   - Chọn chia theo nhân viên 20 + 20, ngẫu nhiên phân tầng theo depot, phạm vi noi_dia + hang_nang.
   - Ghi đánh đổi: chấp nhận mức chênh 6 điểm (859 ca hiệu dụng/nhóm, DE 6,96, ít nhất 299 yêu cầu/người); power chỉ còn 0,64 nếu tác động thật là 5 điểm.
-  - Trả lời năm câu D2; viết ba luật dừng (an toàn, chi phí, mức độ sử dụng) theo mẫu NẾU – TRONG – THÌ – KHÔNG THÌ, dựa trên tỉ lệ mở lại hiện tại 3,97% và tỉ lệ bỏ qua gợi ý 21,1% trong phạm vi.
+  - Trả lời năm câu D2; viết bốn luật dừng theo mẫu NẾU – TRONG – THÌ – KHÔNG THÌ, dựa trên tỉ lệ mở lại hiện tại 3,97% và tỉ lệ bỏ qua gợi ý 21,1% trong phạm vi; luật an toàn tách thành sự cố hoàn trùng (dừng ngay) và tỉ lệ mở lại (đánh giá theo tuần trên yêu cầu đủ 7 ngày).
+  - Ghi chú baseline: 0,70 là số đề cho cho mọi loại yêu cầu; 92,26% trong đợt chạy thử là chỉ số khi có trợ lý nên không phải baseline; trước ngày bắt đầu cần đo baseline chỉ có nhân viên trong phạm vi pilot và tính lại cỡ mẫu.
 - CP5:
   - `chi_so.md`: tính thử ba chỉ số (chính 82,83%, bỏ qua gợi ý 27,12%, mở lại 7 ngày 4,25%), đề xuất thêm hai chỉ số, liệt kê 10 event có `trace_id` và kiểm tra chéo; ba dòng rủi ro kinh tế lấy số từ B1, B4, A4.
   - `ho_so_launch_v0.md`: điền mục 4 (chỉ số), mục 6 (pilot plan), cập nhật mục 7; ghi đề xuất "Go có điều kiện" theo quyết định của nhóm, kèm bốn điều kiện, người phụ trách và ngày kiểm tra.
