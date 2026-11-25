@@ -6,8 +6,8 @@ Nhóm: NHKT · Lớp: L3B
 
 | Mục | Con số chính | Trạng thái | Người phụ trách |
 | --- | --- | --- | --- |
-| 1 · Chi phí mỗi việc thành công | ... | Chưa | Người viết code |
-| 2 · Ba yếu tố nhạy nhất | ... | Chưa | Người kiểm số |
+| 1 · Chi phí mỗi việc thành công | CPS 4.472 đ/việc thành công (978 việc; tổng chi phí 4.373.585 đ; simulated; chưa gồm chi phí cố định) | Giả lập | Người viết code |
+| 2 · Ba yếu tố nhạy nhất | Làm lại gấp đôi: +51,8%; xem lại gấp đôi: +40,7%; lương tăng 25%: +23,1% (simulated) | Giả lập | Người kiểm số |
 | 3 · So với nhân viên tự làm | A4 (noi_dia + hang_nang): 4.599 đ/việc ở 45.000 YC/tháng; 5.784 đ/việc ở 22.500 YC/tháng (simulated), dưới 12.000 đ/YC tự làm; chưa cộng chi phí xử lý ca không thành công | Giả lập | Người gắn nhãn 2, kiêm giữ hồ sơ |
 | 4 · Chỉ số chính, chỉ số dùng, chỉ số an toàn | ... | Chưa | ... |
 | 5 · Bảng lỗi và cách khắc phục | ... | Chưa | Người gắn nhãn 2, kiêm giữ hồ sơ |
