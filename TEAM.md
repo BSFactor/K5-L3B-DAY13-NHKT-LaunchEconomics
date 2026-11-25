@@ -56,15 +56,15 @@ Bốn vai của lab:
 
 ### Phần việc phụ trách
 
-- Gắn nhãn 2 kiêm giữ hồ sơ. Rà A4, B4, gắn nhãn độc lập ở CP3 và tổng hợp bằng chứng A–C vào hồ sơ launch.
+- Người gắn nhãn 2, kiêm giữ hồ sơ: kiểm tra A4, nhận xét B4, gắn nhãn độc lập 20 ca CP3 và tổng hợp bằng chứng vào `ho_so_launch_v0.md`.
 
 ### Đóng góp cụ thể
 
-- Kiểm cách phân bổ 40 triệu đ/tháng ở A4, cho CPS 4.599 đ/việc ở đủ tải và 5.784 đ/việc ở nửa tải (simulated). Rà B4 ở mức xem lại 100%. Gắn nhãn đủ 20 ca, cùng Nguyễn Trọng Nghĩa đối chiếu và thống nhất bốn ca lệch (đồng thuận 16/20).
+- A4: đối chiếu phân bổ chi phí cố định 40 triệu đ/tháng, CPS 4.599/5.784 đ theo hai mức tải (simulated). B4: kiểm tra CPS 11.743 đ khi xem lại 100%, tăng lên 12.414 đ nếu làm lại mất 15,3 phút (simulated). CP3: gắn nhãn người 2, cùng Nguyễn Trọng Nghĩa đối chiếu 20 ca (16/20 trùng, 80%), thống nhất bốn ca bất đồng. E3: cập nhật bằng chứng A–C; rà hồ sơ cuối theo kết quả D–E của nhóm.
 
 ### Bằng chứng
 
-- Commit `2cc3f57` (nhãn người 2), `c7aebaa` (bằng chứng chi phí) và `d08b1cc` (hồ sơ launch và báo cáo cá nhân). [Báo cáo cá nhân](report/team/2A202603816_NguyenVanHung.md) · [Hồ sơ launch](report/team/ho_so_launch_v0.md)
+- Commit `2cc3f57` (nhãn người 2); `6787181`, `c7aebaa`, `81f3f4c`, `d08b1cc` (các lần cập nhật hồ sơ và báo cáo cá nhân). [Bảng lỗi](report/team/bang_loi.md) · [Hồ sơ launch](report/team/ho_so_launch_v0.md) · [Báo cáo cá nhân](report/team/2A202603816_NguyenVanHung.md)
 
 ## NguyenMinhThanh-2A202603884
 
