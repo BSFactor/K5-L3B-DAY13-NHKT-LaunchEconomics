@@ -27,6 +27,8 @@ Số tính bằng `src/lab13.py`. Mọi con số tính từ cột `_simulated` g
 - Chi phí mỗi việc thành công gấp 16,3 lần "hoá đơn chia số yêu cầu".
 - Làm lại chiếm tỉ trọng lớn nhất: 2.264.000 đ / 4.373.585 đ = 51,8% (simulated).
 
+**Đối chiếu độc lập từ CSV.** Tổng 890 phút xem lại × 2.000 đ/phút = 1.780.000 đ (simulated). Tổng chi phí 4.373.585 đ chia 978 yêu cầu thành công cho khoảng 4.472 đ/việc (simulated). Phần chi phí chạy lại đã nằm trong hai dòng token và tool.
+
 ## A3 · Tách theo loại yêu cầu
 
 | Loại | Số yêu cầu | Tỉ lệ thành công | Số lần chạy mỗi yêu cầu | Chi phí mỗi việc thành công | So với 12.000 đ |
