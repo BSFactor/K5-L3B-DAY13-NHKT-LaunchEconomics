@@ -11,10 +11,10 @@
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |        |      |       |        |         |
-|   2 |        |      |       |        |         |
-|   3 |        |      |       |        |         |
-|   4 |        |      |       |        |         |
+|   1 |   Nguyễn Trọng Nghĩa     |   2A202603835   |   nghiatrongnguyen2304@gmail.com    |   trongnghia2304     |   Người gắn nhãn 1      |
+|   2 |    Nguyễn Văn Hùng    |   2A202603816   |    26ai.hungnv12@vinuni.edu.vn   |    nguyenhung1901    |    Người gắn nhãn 2     |
+|   3 |    Nguyễn Minh Thành    |   2A202603884   |   26ai.thanhnm@vinuni.edu.vn    |   thanhhy98     |   Người viết code      |
+|   4 |    Nguyễn Nam Khánh    |   2A202603871   |   26ai.khanhnn3@vinuni.edu.vn    |   BSFactor     |     Người kiểm số    |
 
 Bốn vai của lab:
 
