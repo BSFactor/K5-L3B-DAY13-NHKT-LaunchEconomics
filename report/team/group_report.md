@@ -16,7 +16,7 @@
 
 ## Duyệt chéo và xử lý góp ý
 
-Phiếu Nhóm 101 chấm NHKT ghi **20/30, Go có điều kiện** trên phiên bản họ đã xem. Bản hiện tại có đủ bảy mục và đề xuất. Với câu hỏi về phí cố định ở bước 4 người, nhóm giữ ngưỡng 6.000 đ/việc cho **chi phí biến đổi**, theo dõi 40 triệu đ/tháng riêng trong E2. Luật chênh mở lại 2 điểm áp dụng từ bước 10 người. Trần tuyệt đối 6% và dừng ngay khi hoàn trùng áp dụng ở mọi bước. Nguồn điểm là phiếu Nhóm 101 gửi NHKT. [Luật dừng cập nhật](pilot_plan.yaml)
+Phiếu cập nhật của Nhóm 101 chấm NHKT **30/30, Go có điều kiện** trên commit `6f357f6` (10/10 cho mỗi tiêu chí). Bản hiện tại có đủ bảy mục và đề xuất. Với câu hỏi về phí cố định ở bước 4 người, nhóm giữ ngưỡng 6.000 đ/việc cho **chi phí biến đổi**, theo dõi 40 triệu đ/tháng riêng trong E2. Luật chênh mở lại 2 điểm áp dụng từ bước 10 người. Trần tuyệt đối 6% và dừng ngay khi hoàn trùng áp dụng ở mọi bước. Hội đồng còn góp ý về cách dùng thuật ngữ trong báo cáo cá nhân của Nguyễn Minh Thành. Mục này để tác giả xác nhận và xử lý. [Luật dừng cập nhật](pilot_plan.yaml)
 
 ## Hạn chế
 
