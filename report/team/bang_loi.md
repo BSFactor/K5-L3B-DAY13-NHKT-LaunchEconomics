@@ -5,7 +5,7 @@
 ## Hai bộ nhãn độc lập
 
 Người gắn nhãn 1: Nguyễn Trọng Nghĩa
-Người gắn nhãn 2: Thành viên gắn nhãn độc lập 2 (gắn trong 8 phút, không trao đổi)
+Người gắn nhãn 2: Nguyễn Văn Hùng
 
 |  Ca | Nhãn người 1      | Nhãn người 2      | Trùng? | Nhãn thống nhất   |
 | --: | ----------------- | ----------------- | ------ | ----------------- |
@@ -13,15 +13,15 @@ Người gắn nhãn 2: Thành viên gắn nhãn độc lập 2 (gắn trong 8 p
 |   2 | Hệ thống          | Hệ thống          | Có     | Hệ thống          |
 |   3 | Ngữ cảnh          | Ngữ cảnh          | Có     | Ngữ cảnh          |
 |   4 | Giới hạn hệ thống | Giới hạn hệ thống | Có     | Giới hạn hệ thống |
-|   5 | Hệ thống          | Ngầm              | Có     | Ngầm              |
+|   5 | Hệ thống          | Hệ thống              | Có     | Ngầm              |
 |   6 | Do người dùng     | Do người dùng     | Có     | Do người dùng     |
-|   7 | Giới hạn hệ thống | Hệ thống          | Có     | Hệ thống          |
-|   8 | Ngầm              | Hệ thống          | Có     | Hệ thống          |
+|   7 | Giới hạn hệ thống | Hệ thống          | Không     | Hệ thống          |
+|   8 | Ngầm              | Hệ thống          | Không     | Ngầm          |
 |   9 | Do người dùng     | Do người dùng     | Có     | Do người dùng     |
-|  10 | Ngữ cảnh          | Ngữ cảnh          | Có     | Ngữ cảnh          |
+|  10 | Ngữ cảnh          | Giới hạn hệ thống          | Không     | Ngữ cảnh          |
 |  11 | Giới hạn hệ thống | Giới hạn hệ thống | Có     | Giới hạn hệ thống |
 |  12 | Ngầm              | Ngầm              | Có     | Ngầm              |
-|  13 | Giới hạn hệ thống | Giới hạn hệ thống | Có     | Giới hạn hệ thống |
+|  13 | Giới hạn hệ thống | Ngữ cảnh | Không     | Giới hạn hệ thống |
 |  14 | Do người dùng     | Do người dùng     | Có     | Do người dùng     |
 |  15 | Hệ thống          | Hệ thống          | Có     | Hệ thống          |
 |  16 | Ngữ cảnh          | Ngữ cảnh          | Có     | Ngữ cảnh          |
@@ -30,7 +30,7 @@ Người gắn nhãn 2: Thành viên gắn nhãn độc lập 2 (gắn trong 8 p
 |  19 | Giới hạn hệ thống | Giới hạn hệ thống | Có     | Giới hạn hệ thống |
 |  20 | Hệ thống          | Hệ thống          | Có     | Hệ thống          |
 
-**Tỉ lệ đồng thuận:** 20 / 20 = 100%
+**Tỉ lệ đồng thuận:** 16 / 20 = 80%
 
 ## Quy tắc phân biệt cho các ca không trùng
 
