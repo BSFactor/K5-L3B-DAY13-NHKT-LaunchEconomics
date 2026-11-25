@@ -30,7 +30,7 @@ Copilot được dùng để hỗ trợ rà soát mã, giải thích kết quả
 
 ### Nhóm đã triển khai gì?
 
-Đây là bài phân tích kinh tế và lập kế hoạch pilot cho trợ lý hoàn phí LogiX-VN, không phải một dịch vụ production. Mã đọc hai CSV giả lập, tính chi phí mỗi yêu cầu thành công, tách kết quả theo bốn loại yêu cầu, thử độ nhạy với giá/nhân công/số lần chạy lại, và ước tính cỡ mẫu cùng thời gian thu thập cho pilot. Không cần API key.
+Đây là bài phân tích kinh tế và lập kế hoạch pilot cho trợ lý hoàn phí LogiX-VN. Gate 2a chỉ duyệt kế hoạch pilot, chưa phải một hoạt động vận hành chính thức. Mã đọc hai CSV giả lập, tính chi phí mỗi yêu cầu thành công, tách kết quả theo bốn loại yêu cầu, thử độ nhạy với giá/nhân công/số lần chạy lại, và ước tính cỡ mẫu cùng thời gian thu thập cho pilot. Không cần API key.
 
 ### Các con số chính là gì?
 
@@ -45,7 +45,11 @@ Copilot được dùng để hỗ trợ rà soát mã, giải thích kết quả
 - Tất cả dữ liệu mẫu và giá trong lab là giả định/giả lập; đặc biệt thời gian xem lại và làm lại không phải phép đo vận hành thực tế.
 - CPS không đồng nghĩa với tổng chi phí dài hạn: báo cáo A4 mới cộng riêng khoản cố định theo giả định về lưu lượng và tỉ lệ thành công.
 - Chạy thử không có nhóm đối chứng nên chưa chứng minh agent làm tăng hiệu quả so với hiện trạng.
-- Hồ sơ hiện còn chưa hoàn chỉnh: `pilot_plan.yaml` vẫn còn dấu `?`; `chi_so.md` và `ho_so_launch_v0.md` còn các mục `...`/chưa chốt, gồm ngưỡng an toàn và đề xuất cuối. Không nên trình bày kế hoạch hay quyết định Gate 2a như đã được chốt.
+- Khoản chấp nhận rủi ro là mức chênh 6 điểm thay vì 5 điểm: nếu tác động thật chỉ 5 điểm thì power giảm còn khoảng 0,64. Ngưỡng an toàn, chi phí, cỡ mẫu và lịch pilot vẫn cần được kiểm tra lại bằng dữ liệu vận hành thực tế trước khi mở rộng.
+
+### Câu trả lời về chi phí cố định ở bước 4 người?
+
+Tại bước 4 người, khoản cố định 40 triệu đ/tháng không được cộng vào ngưỡng dừng 6.000 đ/việc của chi phí biến đổi. Ngưỡng 6.000 đ chỉ áp dụng cho token, tool, giờ xem lại và làm lại; khoản cố định được theo dõi riêng trong E2 theo số việc thành công và khối lượng thực tế. Cách tách này tránh việc pilot bị dừng ngay chỉ vì khối lượng ở bước đầu còn thấp. Nếu chi phí biến đổi vượt 6.000 đ trong hai tuần liên tiếp, PM thu hẹp về `noi_dia` và giới hạn hai lần chạy; khoản cố định được rà lại hợp đồng riêng với Giám đốc vận hành.
 
 ## 7. Tự đánh giá
 
