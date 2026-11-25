@@ -2,17 +2,18 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm:
-- Lớp: L3A hoặc L3B
-- Repo nhóm: `K5-L3A-DAY13-TenNhom-LaunchEconomics` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- Tên nhóm: NHKT
+- Lớp: L3B
+- Repo nhóm: [K5-L3B-DAY13-NHKT-LaunchEconomics](https://github.com/BSFactor/K5-L3B-DAY13-NHKT-LaunchEconomics)
+- Nhánh hồ sơ để nộp: [`main`](https://github.com/BSFactor/K5-L3B-DAY13-NHKT-LaunchEconomics/tree/main)
+- Commit chốt nội dung CP5 đã push: [`bdf9d69`](https://github.com/BSFactor/K5-L3B-DAY13-NHKT-LaunchEconomics/commit/bdf9d69)
 
 ## Thành viên
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
 |   1 |   Nguyễn Trọng Nghĩa     |   2A202603835   |   nghiatrongnguyen2304@gmail.com    |   trongnghia2304     |   Người gắn nhãn 1      |
-|   2 |    Nguyễn Văn Hùng    |   2A202603816   |    26ai.hungnv12@vinuni.edu.vn   |    nguyenhung1901    |    Người gắn nhãn 2     |
+|   2 |    Nguyễn Văn Hùng    |   2A202603816   |    26ai.hungnv12@vinuni.edu.vn   |    nguyenhung1901    |    Người gắn nhãn 2 kiêm giữ hồ sơ     |
 |   3 |    Nguyễn Minh Thành    |   2A202603884   |   26ai.thanhnm@vinuni.edu.vn    |   thanhhy98     |   Người viết code      |
 |   4 |    Nguyễn Nam Khánh    |   2A202603871   |   26ai.khanhnn3@vinuni.edu.vn    |   BSFactor     |     Người kiểm số    |
 
@@ -25,31 +26,7 @@ Bốn vai của lab:
 
 Đổi người viết code sau giờ giải lao, để ít nhất hai người trong nhóm tự tay tính được chi phí.
 
-## Cá nhân
-
-Mỗi thành viên đồng thời tạo một báo cáo riêng trong `report/` theo dạng:
-
-```text
-report/team/MSSV_HoTen.md
-```
-
-Ví dụ: `report/team/20241234_NguyenVanAn.md`.
-
-Sao chép mục dưới đây cho từng thành viên.
-
-## HoVaTen-MSSV
-
-### Phần việc phụ trách
-
--
-
-### Đóng góp cụ thể
-
--
-
-### Bằng chứng
-
--
+## Đóng góp của từng thành viên
 
 ## NguyenTrongNghia-2A202603835
 
@@ -71,6 +48,48 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Bằng chứng
 
-- Commit `a4ecb5c` (điền nhãn người 1), `e36337d` (bảng lỗi và báo cáo cá nhân), `b4c6827` (pilot_plan.yaml, TEAM.md), và commit cập nhật chỉ số, hồ sơ launch.
-- File: `report/team/bang_loi.md`, `report/team/pilot_plan.yaml`, `report/team/chi_so.md`, `report/team/ho_so_launch_v0.md`, `report/team/2A202603835_NguyenTrongNghia.md`.
+- Commit `a4ecb5c` (điền nhãn người 1), `e36337d` (bảng lỗi và báo cáo cá nhân), `b4c6827` (pilot_plan.yaml, TEAM.md), và `f7f269b` (chỉ số và hồ sơ launch).
+- [Bảng lỗi](report/team/bang_loi.md) · [Kế hoạch pilot](report/team/pilot_plan.yaml) · [Bảng chỉ số](report/team/chi_so.md) · [Hồ sơ launch](report/team/ho_so_launch_v0.md) · [Báo cáo cá nhân](report/team/2A202603835_NguyenTrongNghia.md)
 - `pilot_plan.yaml` đọc được bằng `yaml.safe_load` và không còn `?` ngoài dòng chú thích; `chi_so.md` và `ho_so_launch_v0.md` không có từ "production".
+
+## NguyenVanHung-2A202603816
+
+### Phần việc phụ trách
+
+- Gắn nhãn 2 kiêm giữ hồ sơ. Rà A4, B4, gắn nhãn độc lập ở CP3 và tổng hợp bằng chứng A–C vào hồ sơ launch.
+
+### Đóng góp cụ thể
+
+- Kiểm cách phân bổ 40 triệu đ/tháng ở A4, cho CPS 4.599 đ/việc ở đủ tải và 5.784 đ/việc ở nửa tải (simulated). Rà B4 ở mức xem lại 100%. Gắn nhãn đủ 20 ca, cùng Nguyễn Trọng Nghĩa đối chiếu và thống nhất bốn ca lệch (đồng thuận 16/20).
+
+### Bằng chứng
+
+- Commit `2cc3f57` (nhãn người 2), `c7aebaa` (bằng chứng chi phí) và `d08b1cc` (hồ sơ launch và báo cáo cá nhân). [Báo cáo cá nhân](report/team/2A202603816_NguyenVanHung.md) · [Hồ sơ launch](report/team/ho_so_launch_v0.md)
+
+## NguyenMinhThanh-2A202603884
+
+### Phần việc phụ trách
+
+- Viết và chạy `src/lab13.py`, đối chiếu đầu ra và giải thích các giả định tính toán.
+
+### Đóng góp cụ thể
+
+- Triển khai ba phép thử A1, mô hình chi phí A2, phân nhóm A3, phí cố định A4 và kịch bản độ nhạy B1–B4. Đối chiếu đầu ra với bảng chi phí, gồm 978 việc thành công và CPS khoảng 4.472 đ/việc (simulated).
+
+### Bằng chứng
+
+- Commit `8cae1c5` và `cbefae2`. [Code](src/lab13.py) · [Bảng chi phí](report/team/bang_chi_phi.md) · [Báo cáo cá nhân](report/team/2A202603884_NguyenMinhThanh.md)
+
+## NguyenNamKhanh-2A202603871
+
+### Phần việc phụ trách
+
+- Kiểm số CP1, tiếp quản phép tính D1 ở CP4 và tổng hợp bản bàn giao CP5.
+
+### Đóng góp cụ thể
+
+- Kiểm khoản xem lại từ CSV, 890 phút × 2.000 đ = 1.780.000 đ (simulated). Viết và đối chiếu năm phép tính D1, kiểm tỷ lệ mở lại 39/982 = 3,97% trong phạm vi pilot và ước tính 10 ngày gom mẫu cộng 7 ngày theo dõi. Tổng hợp báo cáo nhóm, ghi phiếu NHKT chấm TLiet 30/30 và cập nhật luật dừng theo góp ý nhận được.
+
+### Bằng chứng
+
+- Commit `bd18f66` (kiểm số CP1), `84ef905` (kiểm số CP4), `bdf9d69` (hồ sơ và duyệt chéo CP5). [Báo cáo cá nhân](report/team/2A202603871_NguyenNamKhanh.md) · [Kế hoạch pilot](report/team/pilot_plan.yaml) · [Phiếu chấm TLiet](report/team/phieu_cham.md)
