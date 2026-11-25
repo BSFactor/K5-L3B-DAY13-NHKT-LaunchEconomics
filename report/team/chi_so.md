@@ -10,7 +10,7 @@
 | Dùng | Nhóm tự đề xuất: tỉ lệ mở trợ lý của nhóm can thiệp | Số yêu cầu có `agent_suggestion_shown` mà nhân viên nhóm trợ lý mở xem, chia số yêu cầu được giao cho nhóm trợ lý | Không cần tính |
 | An toàn | Nhóm tự đề xuất: tỉ lệ hoàn sai tiền qua đối soát | Số lệnh hoàn trùng mã vận đơn (ca 20) cộng số đơn lệch bảng giá trong kiểm tra mẫu (ca 5, 12, 17), chia số lệnh hoàn được đối soát trong tuần | Không cần tính |
 
-Chỉ số chính trong đợt chạy thử là 82,83%. Không viết "trợ lý đã nâng chỉ số từ 0,70": đợt chạy thử không có nhóm đối chứng. Ba chỉ số trên tính từ cột đo thật, không dùng cột `_simulated`.
+Chỉ số chính trong đợt chạy thử là 82,83%. Không viết "trợ lý đã nâng chỉ số từ 0,70": đợt chạy thử không có nhóm đối chứng. Ba chỉ số trên dùng các cột kết quả của bộ dữ liệu giả lập, không dùng cột phút `_simulated`.
 
 ## Danh sách event
 
@@ -18,9 +18,9 @@ Chỉ số chính trong đợt chạy thử là 82,83%. Không viết "trợ lý
 
 | Event | Ai tạo | Thuộc tính chính | Thời điểm |
 | --- | --- | --- | --- |
-| `refund_request_created` | Ứng dụng khách | request_id, loai, so_tien_vnd, depot, staff_id, arm (tro_ly / doi_chung), trace_id | Khi khách gửi yêu cầu |
+| `refund_request_created` | Ứng dụng khách | request_id, created_at, loai, so_tien_vnd, depot, staff_id, arm (tro_ly / doi_chung), trace_id | Khi khách gửi yêu cầu |
 | `agent_run_completed` | Agent | attempt, tokens_in, tokens_out, tool_calls, status, trace_id | Sau mỗi lần chạy, kể cả lần lỗi |
-| `agent_suggestion_shown` | Giao diện nhân viên | staff_id, so_tien_de_xuat, opened (có/không), trace_id | Khi gợi ý hiện ra cho nhân viên |
+| `agent_suggestion_shown` | Giao diện nhân viên | staff_id, so_tien_de_xuat, opened (có/không), trace_id | Khi gợi ý hiện ra và khi nhân viên mở, đếm theo yêu cầu duy nhất |
 | `staff_review_decision` | Nhân viên | quyet_dinh (giu / sua / bo), phut_xem_lai đo thật, trace_id | Khi nhân viên bấm gửi, sửa hoặc bỏ |
 | `staff_rework_completed` | Nhân viên | phut_lam_lai đo thật, ly_do, trace_id | Khi làm lại xong |
 | `handoff_to_staff` | Agent | reason (thieu_du_lieu, ngoai_12_thang, ngoai_pham_vi…), tom_tat, trace_id | Khi agent chuyển ca cho nhân viên |
@@ -35,7 +35,7 @@ Chỉ số chính trong đợt chạy thử là 82,83%. Không viết "trợ lý
 - Dùng · bỏ qua gợi ý: `staff_review_decision` (sua hoặc bo, chia tổng số decision).
 - An toàn · lỗi lọt đến khách: `ticket_reopened` chia `refund_request_created`.
 - Dùng · tỉ lệ mở trợ lý: `agent_suggestion_shown.opened` chia `refund_request_created` có arm = tro_ly.
-- An toàn · hoàn sai tiền: `refund_ledger_write` (đếm trùng `ma_van_don`) + `audit_sample_checked` (lệch so với bảng giá).
+- An toàn · hoàn sai tiền: `refund_ledger_write` (chỉ lệnh thành công, đếm hoàn trùng) + `audit_sample_checked` (lệch bảng giá). Đếm lệnh lỗi duy nhất trong tập lệnh đã đối soát, gộp hai nhóm và loại trùng.
 - Chi phí mỗi việc thành công: `agent_run_completed` (token, tool) + `staff_review_decision` và `staff_rework_completed` (phút đo thật thay cho hai cột `_simulated`).
 - Cả năm chỉ số đều tính được từ danh sách event.
 
